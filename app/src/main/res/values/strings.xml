@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Kalkulacka</string>
+
+    <string-array name="spinnerVyber">
+        <item>+</item>
+        <item>-</item>
+        <item>*</item>
+        <item>/</item>
+        <item>modulo</item>
+        <item>n-tá mocnina</item>
+        <item>n-tá odmocnina</item>
+        <item>faktoriál</item>
+    </string-array>
 </resources>
