@@ -19,13 +19,14 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.lang.reflect.Array;
+import java.math.BigDecimal;
 
 public class MainActivity extends AppCompatActivity {
 
     Spinner spinner;
 
     Button tlacitko;
-
+    EditText cislo1;
     EditText cislo2;
 
     @Override
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         spinner = findViewById(R.id.spinner);
         tlacitko = findViewById(R.id.tlacitko);
+        cislo1 = findViewById(R.id.cislo1);
         cislo2 = findViewById(R.id.cislo2);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -63,5 +65,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    public void vypocet(View view){
+        CharSequence vyber = spinner.getSelectedItem().toString();
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_LONG;
+        if(vyber.equals("+")){
+            String cisloJedna = cislo1.getText().toString();
+            BigDecimal cislo1 = new BigDecimal(cisloJedna);
 
+            String cisloDve = cislo2.getText().toString();
+            BigDecimal cislo2 = new BigDecimal(cisloDve);
+
+            BigDecimal vysledek = cislo1.add(cislo2);
+
+            CharSequence vypis = cisloJedna + " + " + cisloDve + " = " + vysledek;
+
+            Toast.makeText(context, vypis, duration).show();
+        }
+
+    }
 }
