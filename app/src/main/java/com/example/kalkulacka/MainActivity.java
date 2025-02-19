@@ -105,6 +105,24 @@ public class MainActivity extends AppCompatActivity {
             CharSequence vypis = cisloJedna + " × " + cisloDve + " = " + vysledek;
 
             Toast.makeText(context, vypis, duration).show();
+        }else if(vyber.equals("/")){
+            String cisloJedna = cislo1.getText().toString();
+            BigDecimal cislo1 = new BigDecimal(cisloJedna);
+
+            String cisloDve = cislo2.getText().toString();
+            BigDecimal cislo2 = new BigDecimal(cisloDve);
+
+            if(cislo2.compareTo(BigDecimal.ZERO)!=0) {
+                BigDecimal vysledek = cislo1.divide(cislo2);
+
+                CharSequence vypis = cisloJedna + " ÷ " + cisloDve + " = " + vysledek;
+
+                Toast.makeText(context, vypis, duration).show();
+            }else {
+                CharSequence vypis = "Erorr. Snažíte se dělit nulou.";
+
+                Toast.makeText(context, vypis, duration).show();
+            }
         }
 
     }
