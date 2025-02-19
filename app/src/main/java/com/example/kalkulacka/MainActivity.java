@@ -135,6 +135,18 @@ public class MainActivity extends AppCompatActivity {
             CharSequence vypis = cisloJedna + " % " + cisloDve + " = " + vysledek;
 
             Toast.makeText(context, vypis, duration).show();
+        }else if(vyber.equals("n-tá mocnina")){
+            String cisloJedna = cislo1.getText().toString();
+            BigDecimal cislo1 = new BigDecimal(cisloJedna);
+
+            String cisloDve = cislo2.getText().toString();
+            int cislo2 = Integer.parseInt(cisloDve);
+
+            BigDecimal vysledek = cislo1.pow(cislo2);
+
+            CharSequence vypis = cisloJedna + " ^ " + cisloDve + " = " + vysledek;
+
+            Toast.makeText(context, vypis, duration).show();
         }
 
     }
