@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     Button tlacitko;
 
+    EditText cislo2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         spinner = findViewById(R.id.spinner);
         tlacitko = findViewById(R.id.tlacitko);
+        cislo2 = findViewById(R.id.cislo2);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -48,11 +51,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int duration, long l) {
+            public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
                 CharSequence vyber = spinner.getSelectedItem().toString();
-                Context context = getApplicationContext();
-                duration = Toast.LENGTH_LONG;
-                Toast.makeText(context, vyber, duration).show();
+                if(vyber.equals("faktorial")) {
+                    cislo2.setVisibility(View.INVISIBLE);
+                }else{
+                    cislo2.setVisibility(View.VISIBLE);
+                }
             }
             public void onNothingSelected(AdapterView<?> parent) {
             }
