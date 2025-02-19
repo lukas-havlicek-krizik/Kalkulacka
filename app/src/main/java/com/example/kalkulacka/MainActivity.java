@@ -93,6 +93,18 @@ public class MainActivity extends AppCompatActivity {
             CharSequence vypis = cisloJedna + " - " + cisloDve + " = " + vysledek;
 
             Toast.makeText(context, vypis, duration).show();
+        }else if(vyber.equals("*")){
+            String cisloJedna = cislo1.getText().toString();
+            BigDecimal cislo1 = new BigDecimal(cisloJedna);
+
+            String cisloDve = cislo2.getText().toString();
+            BigDecimal cislo2 = new BigDecimal(cisloDve);
+
+            BigDecimal vysledek = cislo1.multiply(cislo2);
+
+            CharSequence vypis = cisloJedna + " × " + cisloDve + " = " + vysledek;
+
+            Toast.makeText(context, vypis, duration).show();
         }
 
     }
