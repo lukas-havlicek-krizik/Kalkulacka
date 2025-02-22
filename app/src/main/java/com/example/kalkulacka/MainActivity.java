@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
                 CharSequence vyber = spinner.getSelectedItem().toString();
-                if(vyber.equals("!")) {
+                if(vyber.equals("a!")) {
                     cislo2.setVisibility(View.INVISIBLE);
                 }else{
                     cislo2.setVisibility(View.VISIBLE);
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void vypocet(View view){
+    public void vypocet(View view) {
         CharSequence vyber = spinner.getSelectedItem().toString();
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_LONG;
@@ -75,12 +75,21 @@ public class MainActivity extends AppCompatActivity {
         double cislo1 = Double.parseDouble(cisloJedna);
 
         String cisloDve = cislo2.getText().toString();
-        double cislo2 = Double.parseDouble(cisloDve);
+        double cislo2;
+
+        if (cisloDve.isEmpty() && vyber.equals("a!")) {
+            cislo2 = 1;
+        }else if (cisloJedna.isEmpty() || (cisloDve.isEmpty() && !vyber.equals("a!"))) {
+            Toast.makeText(context, "Musíte zadat obě čísla.", duration).show();
+            return;
+        }else {
+            cislo2 = Double.parseDouble(cisloDve);
+        }
 
         double vysledek;
 
         if(vyber.equals("a+b")){
-            vysledek = (cislo1+cislo2);
+            vysledek = (cislo1 + cislo2);
             CharSequence vypis = cisloJedna + " + " + cisloDve + " = " + vysledek;
             Toast.makeText(context, vypis, duration).show();
 
@@ -124,12 +133,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(context, vypis, duration).show();
 
         }else if(vyber.equals("a!")){
-
             vysledek = 1;
             for (int i = 1; i <= cislo1; i++) {
                 vysledek = vysledek * i;
             }
-            CharSequence vypis = cisloJedna + "!" + " = " + vysledek;
+            CharSequence vypis = cisloJedna + "! = " + vysledek;
             Toast.makeText(context, vypis, duration).show();
 
         }
