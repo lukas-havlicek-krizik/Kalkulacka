@@ -76,24 +76,26 @@ public class MainActivity extends AppCompatActivity {
         String cisloDve = cislo2.getText().toString();
         double cislo2 = Double.parseDouble(cisloDve);
 
+        double vysledek;
+
         if(vyber.equals("+")){
-            double vysledek = (cislo1+cislo2);
+            vysledek = (cislo1+cislo2);
             CharSequence vypis = cisloJedna + " + " + cisloDve + " = " + vysledek;
             Toast.makeText(context, vypis, duration).show();
 
         }else if(vyber.equals("-")){
-            double vysledek = (cislo1-cislo2);
+            vysledek = (cislo1-cislo2);
             CharSequence vypis = cisloJedna + " - " + cisloDve + " = " + vysledek;
             Toast.makeText(context, vypis, duration).show();
 
         }else if(vyber.equals("*")){
-            double vysledek = (cislo1*cislo2);
+            vysledek = (cislo1*cislo2);
             CharSequence vypis = cisloJedna + " × " + cisloDve + " = " + vysledek;
             Toast.makeText(context, vypis, duration).show();
 
         }else if(vyber.equals("/")){
             if(cislo2!=0) {
-                double vysledek = (cislo1/cislo2);
+                vysledek = (cislo1/cislo2);
                 CharSequence vypis = cisloJedna + " ÷ " + cisloDve + " = " + vysledek;
                 Toast.makeText(context, vypis, duration).show();
 
@@ -104,14 +106,20 @@ public class MainActivity extends AppCompatActivity {
 
         }else if(vyber.equals("modulo")){
 
-            double vysledek = (cislo1%cislo2);
+            vysledek = (cislo1%cislo2);
             CharSequence vypis = cisloJedna + " % " + cisloDve + " = " + vysledek;
             Toast.makeText(context, vypis, duration).show();
 
         }else if(vyber.equals("n-tá mocnina")){
 
-            double vysledek = Math.pow(cislo1, cislo2);
+            vysledek = Math.pow(cislo1, cislo2);
             CharSequence vypis = cisloJedna + " ^ " + cisloDve + " = " + vysledek;
+            Toast.makeText(context, vypis, duration).show();
+
+        }else if(vyber.equals("n-tá odmocnina")){
+
+            vysledek = Math.pow(cislo1, (1/cislo2));
+            CharSequence vypis = cisloJedna + " ^ " + "1/" + cisloDve + " = " + vysledek;
             Toast.makeText(context, vypis, duration).show();
 
         }
