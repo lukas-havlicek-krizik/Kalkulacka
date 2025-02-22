@@ -69,84 +69,51 @@ public class MainActivity extends AppCompatActivity {
         CharSequence vyber = spinner.getSelectedItem().toString();
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_LONG;
+
+        String cisloJedna = cislo1.getText().toString();
+        double cislo1 = Double.parseDouble(cisloJedna);
+
+        String cisloDve = cislo2.getText().toString();
+        double cislo2 = Double.parseDouble(cisloDve);
+
         if(vyber.equals("+")){
-            String cisloJedna = cislo1.getText().toString();
-            BigDecimal cislo1 = new BigDecimal(cisloJedna);
-
-            String cisloDve = cislo2.getText().toString();
-            BigDecimal cislo2 = new BigDecimal(cisloDve);
-
-            BigDecimal vysledek = cislo1.add(cislo2);
-
+            double vysledek = (cislo1+cislo2);
             CharSequence vypis = cisloJedna + " + " + cisloDve + " = " + vysledek;
-
             Toast.makeText(context, vypis, duration).show();
+
         }else if(vyber.equals("-")){
-            String cisloJedna = cislo1.getText().toString();
-            BigDecimal cislo1 = new BigDecimal(cisloJedna);
-
-            String cisloDve = cislo2.getText().toString();
-            BigDecimal cislo2 = new BigDecimal(cisloDve);
-
-            BigDecimal vysledek = cislo1.subtract(cislo2);
-
+            double vysledek = (cislo1-cislo2);
             CharSequence vypis = cisloJedna + " - " + cisloDve + " = " + vysledek;
-
             Toast.makeText(context, vypis, duration).show();
+
         }else if(vyber.equals("*")){
-            String cisloJedna = cislo1.getText().toString();
-            BigDecimal cislo1 = new BigDecimal(cisloJedna);
-
-            String cisloDve = cislo2.getText().toString();
-            BigDecimal cislo2 = new BigDecimal(cisloDve);
-
-            BigDecimal vysledek = cislo1.multiply(cislo2);
-
+            double vysledek = (cislo1*cislo2);
             CharSequence vypis = cisloJedna + " × " + cisloDve + " = " + vysledek;
-
             Toast.makeText(context, vypis, duration).show();
+
         }else if(vyber.equals("/")){
-            String cisloJedna = cislo1.getText().toString();
-            BigDecimal cislo1 = new BigDecimal(cisloJedna);
-
-            String cisloDve = cislo2.getText().toString();
-            BigDecimal cislo2 = new BigDecimal(cisloDve);
-
-            if(cislo2.compareTo(BigDecimal.ZERO)!=0) {
-                BigDecimal vysledek = cislo1.divide(cislo2);
-
+            if(cislo2!=0) {
+                double vysledek = (cislo1/cislo2);
                 CharSequence vypis = cisloJedna + " ÷ " + cisloDve + " = " + vysledek;
-
                 Toast.makeText(context, vypis, duration).show();
+
             }else {
                 CharSequence vypis = "Erorr. Snažíte se dělit nulou.";
-
                 Toast.makeText(context, vypis, duration).show();
             }
+
         }else if(vyber.equals("modulo")){
-            String cisloJedna = cislo1.getText().toString();
-            BigDecimal cislo1 = new BigDecimal(cisloJedna);
 
-            String cisloDve = cislo2.getText().toString();
-            BigDecimal cislo2 = new BigDecimal(cisloDve);
-
-            BigDecimal vysledek = cislo1.remainder(cislo2);
-
+            double vysledek = (cislo1%cislo2);
             CharSequence vypis = cisloJedna + " % " + cisloDve + " = " + vysledek;
-
             Toast.makeText(context, vypis, duration).show();
+
         }else if(vyber.equals("n-tá mocnina")){
-            String cisloJedna = cislo1.getText().toString();
-            BigDecimal cislo1 = new BigDecimal(cisloJedna);
 
-            String cisloDve = cislo2.getText().toString();
-            int cislo2 = Integer.parseInt(cisloDve);
-
-            BigDecimal vysledek = cislo1.pow(cislo2);
-
+            double vysledek = Math.pow(cislo1, cislo2);
             CharSequence vypis = cisloJedna + " ^ " + cisloDve + " = " + vysledek;
-
             Toast.makeText(context, vypis, duration).show();
+
         }
 
     }
