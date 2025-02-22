@@ -2,13 +2,13 @@
     <string name="app_name">Kalkulacka</string>
 
     <string-array name="spinnerVyber">
-        <item>+</item>
-        <item>-</item>
-        <item>*</item>
-        <item>/</item>
-        <item>modulo</item>
-        <item>n-tá mocnina</item>
-        <item>n-tá odmocnina</item>
-        <item>faktorial</item>
+        <item>a+b</item>
+        <item>a-b</item>
+        <item>a*b</item>
+        <item>a/b</item>
+        <item>a%b</item>
+        <item>a^b</item>
+        <item>a^(1/b)</item>
+        <item>a!</item>
     </string-array>
 </resources>

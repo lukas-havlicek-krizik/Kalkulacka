@@ -55,10 +55,11 @@ public class MainActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
                 CharSequence vyber = spinner.getSelectedItem().toString();
-                if(vyber.equals("faktorial")) {
+                if(vyber.equals("!")) {
                     cislo2.setVisibility(View.INVISIBLE);
                 }else{
                     cislo2.setVisibility(View.VISIBLE);
+
                 }
             }
             public void onNothingSelected(AdapterView<?> parent) {
@@ -78,22 +79,22 @@ public class MainActivity extends AppCompatActivity {
 
         double vysledek;
 
-        if(vyber.equals("+")){
+        if(vyber.equals("a+b")){
             vysledek = (cislo1+cislo2);
             CharSequence vypis = cisloJedna + " + " + cisloDve + " = " + vysledek;
             Toast.makeText(context, vypis, duration).show();
 
-        }else if(vyber.equals("-")){
+        }else if(vyber.equals("a-b")){
             vysledek = (cislo1-cislo2);
             CharSequence vypis = cisloJedna + " - " + cisloDve + " = " + vysledek;
             Toast.makeText(context, vypis, duration).show();
 
-        }else if(vyber.equals("*")){
+        }else if(vyber.equals("a*b")){
             vysledek = (cislo1*cislo2);
             CharSequence vypis = cisloJedna + " × " + cisloDve + " = " + vysledek;
             Toast.makeText(context, vypis, duration).show();
 
-        }else if(vyber.equals("/")){
+        }else if(vyber.equals("a/b")){
             if(cislo2!=0) {
                 vysledek = (cislo1/cislo2);
                 CharSequence vypis = cisloJedna + " ÷ " + cisloDve + " = " + vysledek;
@@ -104,25 +105,25 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(context, vypis, duration).show();
             }
 
-        }else if(vyber.equals("modulo")){
+        }else if(vyber.equals("a%b")){
 
             vysledek = (cislo1%cislo2);
             CharSequence vypis = cisloJedna + " % " + cisloDve + " = " + vysledek;
             Toast.makeText(context, vypis, duration).show();
 
-        }else if(vyber.equals("n-tá mocnina")){
+        }else if(vyber.equals("a^b")){
 
             vysledek = Math.pow(cislo1, cislo2);
             CharSequence vypis = cisloJedna + " ^ " + cisloDve + " = " + vysledek;
             Toast.makeText(context, vypis, duration).show();
 
-        }else if(vyber.equals("n-tá odmocnina")){
+        }else if(vyber.equals("a^(1/b)")){
 
             vysledek = Math.pow(cislo1, (1/cislo2));
             CharSequence vypis = cisloJedna + " ^ " + "1/" + cisloDve + " = " + vysledek;
             Toast.makeText(context, vypis, duration).show();
 
-        }else if(vyber.equals("faktorial")){
+        }else if(vyber.equals("a!")){
 
             vysledek = 1;
             for (int i = 1; i <= cislo1; i++) {
