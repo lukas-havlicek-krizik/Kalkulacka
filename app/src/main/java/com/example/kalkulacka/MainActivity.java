@@ -72,18 +72,24 @@ public class MainActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_LONG;
 
         String cisloJedna = cislo1.getText().toString();
-        double cislo1 = Double.parseDouble(cisloJedna);
+        double cislo1 = 0;
 
         String cisloDve = cislo2.getText().toString();
-        double cislo2;
+        double cislo2 = 0;
 
-        if (cisloDve.isEmpty() && vyber.equals("a!")) {
-            cislo2 = 1;
-        }else if (cisloJedna.isEmpty() || (cisloDve.isEmpty() && !vyber.equals("a!"))) {
+        if ((cisloJedna.isEmpty() && vyber.equals("a!")) || (cisloJedna.isEmpty() && cisloDve.isEmpty() && vyber.equals("a!"))){
+            Toast.makeText(context, "Musíte zadat číslo.", duration).show();
+            return;
+        }else if ((cisloJedna.isEmpty() || cisloDve.isEmpty()) && !vyber.equals("a!")) {
             Toast.makeText(context, "Musíte zadat obě čísla.", duration).show();
             return;
         }else {
-            cislo2 = Double.parseDouble(cisloDve);
+            cislo1 = Double.parseDouble(cisloJedna);
+            if(vyber.equals("a!") && cisloDve.isEmpty()){
+                cislo2 = 1;
+            }else {
+                cislo2 = Double.parseDouble(cisloDve);
+            }
         }
 
         double vysledek;
@@ -110,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(context, vypis, duration).show();
 
             }else {
-                CharSequence vypis = "Erorr. Snažíte se dělit nulou.";
+                CharSequence vypis = "Snažíte se dělit nulou.";
                 Toast.makeText(context, vypis, duration).show();
             }
 
@@ -139,8 +145,8 @@ public class MainActivity extends AppCompatActivity {
             }
             CharSequence vypis = cisloJedna + "! = " + vysledek;
             Toast.makeText(context, vypis, duration).show();
-
         }
+
 
     }
 }
