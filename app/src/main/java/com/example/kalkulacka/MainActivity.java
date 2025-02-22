@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView;
 
@@ -28,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     Button tlacitko;
     EditText cislo1;
     EditText cislo2;
+    TextView vysledekOkno;
+    CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         tlacitko = findViewById(R.id.tlacitko);
         cislo1 = findViewById(R.id.cislo1);
         cislo2 = findViewById(R.id.cislo2);
+        vysledekOkno = findViewById(R.id.vysledek);
+        checkBox = findViewById(R.id.checkBox);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -65,6 +72,16 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    vysledekOkno.setVisibility(View.INVISIBLE);
+                } else {
+                    vysledekOkno.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
     }
     public void vypocet(View view) {
         CharSequence vyber = spinner.getSelectedItem().toString();
@@ -97,46 +114,73 @@ public class MainActivity extends AppCompatActivity {
         if(vyber.equals("a+b")){
             vysledek = (cislo1 + cislo2);
             CharSequence vypis = cisloJedna + " + " + cisloDve + " = " + vysledek;
-            Toast.makeText(context, vypis, duration).show();
-
+            if(checkBox.isChecked()){
+                Toast.makeText(context, vypis, duration).show();
+            }else {
+                vysledekOkno.setText(vypis);
+            }
         }else if(vyber.equals("a-b")){
             vysledek = (cislo1-cislo2);
             CharSequence vypis = cisloJedna + " - " + cisloDve + " = " + vysledek;
-            Toast.makeText(context, vypis, duration).show();
-
+            if(checkBox.isChecked()){
+                Toast.makeText(context, vypis, duration).show();
+            }else {
+                vysledekOkno.setText(vypis);
+            }
         }else if(vyber.equals("a*b")){
             vysledek = (cislo1*cislo2);
             CharSequence vypis = cisloJedna + " × " + cisloDve + " = " + vysledek;
-            Toast.makeText(context, vypis, duration).show();
-
+            if(checkBox.isChecked()){
+                Toast.makeText(context, vypis, duration).show();
+            }else {
+                vysledekOkno.setText(vypis);
+            }
         }else if(vyber.equals("a/b")){
             if(cislo2!=0) {
                 vysledek = (cislo1/cislo2);
                 CharSequence vypis = cisloJedna + " ÷ " + cisloDve + " = " + vysledek;
-                Toast.makeText(context, vypis, duration).show();
-
+                if(checkBox.isChecked()){
+                    Toast.makeText(context, vypis, duration).show();
+                }else {
+                    vysledekOkno.setText(vypis);
+                }
             }else {
                 CharSequence vypis = "Snažíte se dělit nulou.";
-                Toast.makeText(context, vypis, duration).show();
-            }
+                if(checkBox.isChecked()){
+                    Toast.makeText(context, vypis, duration).show();
+                }else {
+                    vysledekOkno.setText(vypis);
+                }            }
 
         }else if(vyber.equals("a%b")){
 
             vysledek = (cislo1%cislo2);
             CharSequence vypis = cisloJedna + " % " + cisloDve + " = " + vysledek;
-            Toast.makeText(context, vypis, duration).show();
+            if(checkBox.isChecked()){
+                Toast.makeText(context, vypis, duration).show();
+            }else {
+                vysledekOkno.setText(vypis);
+            }
 
         }else if(vyber.equals("a^b")){
 
             vysledek = Math.pow(cislo1, cislo2);
             CharSequence vypis = cisloJedna + " ^ " + cisloDve + " = " + vysledek;
-            Toast.makeText(context, vypis, duration).show();
+            if(checkBox.isChecked()){
+                Toast.makeText(context, vypis, duration).show();
+            }else {
+                vysledekOkno.setText(vypis);
+            }
 
         }else if(vyber.equals("a^(1/b)")){
 
             vysledek = Math.pow(cislo1, (1/cislo2));
             CharSequence vypis = cisloJedna + " ^ " + "1/" + cisloDve + " = " + vysledek;
-            Toast.makeText(context, vypis, duration).show();
+            if(checkBox.isChecked()){
+                Toast.makeText(context, vypis, duration).show();
+            }else {
+                vysledekOkno.setText(vypis);
+            }
 
         }else if(vyber.equals("a!")){
             vysledek = 1;
@@ -144,8 +188,13 @@ public class MainActivity extends AppCompatActivity {
                 vysledek = vysledek * i;
             }
             CharSequence vypis = cisloJedna + "! = " + vysledek;
-            Toast.makeText(context, vypis, duration).show();
+            if(checkBox.isChecked()){
+                Toast.makeText(context, vypis, duration).show();
+            }else {
+                vysledekOkno.setText(vypis);
+            }
         }
+
 
 
     }
