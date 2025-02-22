@@ -122,6 +122,15 @@ public class MainActivity extends AppCompatActivity {
             CharSequence vypis = cisloJedna + " ^ " + "1/" + cisloDve + " = " + vysledek;
             Toast.makeText(context, vypis, duration).show();
 
+        }else if(vyber.equals("faktorial")){
+
+            vysledek = 1;
+            for (int i = 1; i <= cislo1; i++) {
+                vysledek = vysledek * i;
+            }
+            CharSequence vypis = cisloJedna + "!" + " = " + vysledek;
+            Toast.makeText(context, vypis, duration).show();
+
         }
 
     }
